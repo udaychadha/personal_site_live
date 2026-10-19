@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en" data-theme="night">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Uday Chadha's personal website. A work in progress.">
+  <meta name="theme-color" content="#0d0f0f">
+  <title>Uday Chadha — Under construction</title>
+  <script>
+    try {
+      const saved = localStorage.getItem('uc-holding-theme');
+      if (saved === 'paper' || saved === 'night') document.documentElement.dataset.theme = saved;
+    } catch {}
+  </script>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d0f0f; --fg: #f4f0e8; --muted: #aaa69e;
+      --border: rgba(244,240,232,.14); --grid: rgba(244,240,232,.035);
+      --accent: #9187d6; --accent-quiet: rgba(145,135,214,.12);
+      --serif: Georgia, 'Times New Roman', serif;
+      --sans: ui-sans-serif, system-ui, sans-serif;
+      --mono: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+    }
+    :root[data-theme="paper"] {
+      color-scheme: light;
+      --bg: #fbfaf6; --fg: #171817; --muted: #62645f;
+      --border: rgba(23,24,23,.16); --grid: rgba(23,24,23,.045);
+      --accent: #6b57b3; --accent-quiet: rgba(107,87,179,.09);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+    body::before { content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none; background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px); background-size: 64px 64px; mask-image: linear-gradient(#000, transparent 90%); }
+    .page { width: min(100% - 64px, 1120px); margin-inline: auto; min-height: 100svh; display: flex; flex-direction: column; }
+    header { min-height: 96px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid var(--border); }
+    .brand { display: flex; align-items: center; gap: 12px; font-family: var(--serif); font-size: 20px; }
+    .monogram { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid var(--accent); border-radius: 50%; color: var(--accent); font-size: 13px; }
+    .themes { display: flex; gap: 4px; padding: 4px; border: 1px solid var(--border); border-radius: 999px; }
+    .themes button { display: grid; place-items: center; width: 34px; height: 30px; border: 0; border-radius: 999px; color: var(--muted); background: transparent; cursor: pointer; }
+    .themes button[aria-pressed="true"] { color: var(--bg); background: var(--accent); }
+    .themes svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+    button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    main { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; padding-block: 96px 112px; }
+    .eyebrow { display: flex; align-items: center; gap: 12px; font: 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+    .eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
+    h1 { font: 400 clamp(64px, 9vw, 112px)/.98 var(--serif); letter-spacing: -.045em; margin: 30px 0; }
+    h1 em { color: var(--accent); font-weight: 400; }
+    .intro { font: 22px/1.6 var(--serif); color: var(--muted); margin: 0; max-width: 32ch; }
+    .status { margin-top: 44px; display: inline-flex; align-items: center; gap: 10px; padding: 10px 14px; border: 1px solid var(--border); border-radius: 999px; background: var(--accent-quiet); color: var(--muted); font: 11px/1.4 var(--mono); }
+    .status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+    footer { display: flex; justify-content: space-between; gap: 16px; padding-block: 24px; border-top: 1px solid var(--border); color: var(--muted); font: 11px/1.6 var(--mono); }
+    ::selection { background: var(--accent); color: var(--bg); }
+    @media(max-width: 520px) {
+      .page { width: calc(100% - 40px); }
+      header { min-height: 80px; gap: 12px; }
+      .brand { font-size: 18px; gap: 8px; }
+      main { padding-block: 72px; }
+      h1 { font-size: clamp(52px, 14vw, 72px); }
+      .intro { font-size: 20px; }
+      footer { flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand"><span class="monogram" aria-hidden="true">UC</span>Uday Chadha</div>
+      <div class="themes" role="group" aria-label="Color theme">
+        <button type="button" data-theme-choice="night" aria-label="Dark theme" aria-pressed="true" title="Dark theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 13A9 9 0 0 1 11 3.2 9 9 0 1 0 20.8 13Z"/></svg></button>
+        <button type="button" data-theme-choice="paper" aria-label="Light theme" aria-pressed="false" title="Light theme"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg></button>
+      </div>
+    </header>
+    <main>
+      <div class="eyebrow">A work in progress</div>
+      <h1>Under<br><em>construction.</em></h1>
+      <p class="intro">I'm putting a new site together.<br>Making this page was the easy part.</p>
+      <div class="status">Still moving things around</div>
+    </main>
+    <footer><span>© <span id="year">2026</span> Uday Chadha</span><span>Thanks for stopping by.</span></footer>
+  </div>
+  <script>
+    const controls = document.querySelectorAll('[data-theme-choice]');
+    function applyTheme(theme) {
+      document.documentElement.dataset.theme = theme;
+      controls.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.themeChoice === theme)));
+      document.querySelector('meta[name="theme-color"]').content = theme === 'paper' ? '#fbfaf6' : '#0d0f0f';
+    }
+    applyTheme(document.documentElement.dataset.theme);
+    controls.forEach(button => button.addEventListener('click', () => {
+      const theme = button.dataset.themeChoice;
+      applyTheme(theme);
+      try { localStorage.setItem('uc-holding-theme', theme); } catch {}
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
